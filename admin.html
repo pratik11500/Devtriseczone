@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devtri Seczone Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <div class="admin-logo">
+                <a href="/">
+                    <img src="/assets/logo.png" alt="Devtri Seczone Logo">
+                    Devtri Seczone Admin
+                </a>
+            </div>
+            <div class="header-controls">
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="/" class="back-to-site">
+                    <i class="fas fa-arrow-left"></i> Back to Site
+                </a>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <aside class="admin-sidebar" id="sidebar">
+                <div class="admin-profile">
+                    <div class="admin-avatar">A</div>
+                    <div class="admin-info">
+                        <h3>Admin</h3>
+                        <p>Super Admin</p>
+                    </div>
+                </div>
+                <nav class="admin-nav">
+                    <ul>
+                        <li class="active"><a href="#overview"><i class="fas fa-tachometer-alt"></i> Overview</a></li>
+                        <li><a href="#recent-visitors"><i class="fas fa-users"></i> Recent Visitors</a></li>
+                        <li><a href="#browser-stats"><i class="fas fa-globe"></i> Browser Stats</a></li>
+                        <li><a href="#page-stats"><i class="fas fa-file-alt"></i> Page Stats</a></li>
+                        <li><a href="#device-stats"><i class="fas fa-mobile-alt"></i> Device Stats</a></li>
+                        <li><a href="#session-stats"><i class="fas fa-clock"></i> Session Stats</a></li>
+                        <li><a href="#contact-logs"><i class="fas fa-envelope"></i> Contact Logs</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="admin-content">
+                <section id="overview" class="admin-panel active">
+                    <div class="dashboard-controls">
+                    </div>
+                    <div class="stats-cards">
+                        <div class="stats-card">
+                            <div class="stats-icon"><i class="fas fa-users"></i></div>
+                            <div class="stats-info">
+                                <h3>Total Visitors</h3>
+                                <p id="total-visitors">0</p>
+                            </div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-icon"><i class="fas fa-eye"></i></div>
+                            <div class="stats-info">
+                                <h3>Total Page Views</h3>
+                                <p id="total-page-views">0</p>
+                            </div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="stats-info">
+                                <h3>Mobile Users</h3>
+                                <p id="mobile-users">0%</p>
+                            </div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stats-icon"><i class="fas fa-desktop"></i></div>
+                            <div class="stats-info">
+                                <h3>PC Users</h3>
+                                <p id="pc-users">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="charts-container">
+                        <div class="chart-box">
+                            <h3>Visitors Over Time</h3>
+                            <canvas id="visitors-chart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="recent-visitors" class="admin-panel">
+                    <div class="table-container">
+                        <h3>Recent Visitors</h3>
+                        <table class="visitors-table">
+                            <thead>
+                                <tr>
+                                    <th>Visitor ID</th>
+                                    <th>Timestamp</th>
+                                    <th>Visits</th>
+                                    <th>Browser</th>
+                                    <th>Device</th>
+                                    <th>Screen Size</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-visitors-table"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="browser-stats" class="admin-panel">
+                    <div class="stats-overview">
+                        <h3>Browser Statistics</h3>
+                        <div class="stat-chart-container">
+                            <canvas id="browser-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="stats-details">
+                        <div class="detail-card">
+                            <h3>Browser Breakdown</h3>
+                            <div class="browser-stats" id="browser-stats"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="page-stats" class="admin-panel">
+                    <div class="stats-overview">
+                        <h3>Page Statistics</h3>
+                        <div class="stat-chart-container">
+                            <canvas id="page-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="stats-details">
+                        <div class="detail-card">
+                            <h3>Page Breakdown</h3>
+                            <div class="page-stats" id="page-stats"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="device-stats" class="admin-panel">
+                    <div class="stats-overview">
+                        <h3>Device Statistics</h3>
+                        <div class="stat-chart-container">
+                            <canvas id="device-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="stats-details">
+                        <div class="detail-card">
+                            <h3>Device Breakdown</h3>
+                            <div class="device-stats" id="device-stats"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="session-stats" class="admin-panel">
+                    <div class="stats-overview">
+                        <h3>Session Duration</h3>
+                        <div class="stat-chart-container">
+                            <canvas id="session-chart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact-logs" class="admin-panel">
+                    <div class="stats-overview">
+                        <h3>Contact Logs</h3>
+                        <div class="row" id="contact-logs-container">
+                            <!-- Contact logs will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="admin-footer">
+            <p>&copy; 2025 Devtri Seczone Private Limited. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/admin.js"></script>
+    <script src="/js/animations.js"></script>
+</body>
+</html>
